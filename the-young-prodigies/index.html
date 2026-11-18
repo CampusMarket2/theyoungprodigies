@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>THE YOUNG PRODIGIES </title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="/style.css" />
+
+  <!-- Paystack Inline JS SDK -->
+  <script src="https://js.paystack.co/v1/inline.js"></script>
+</head>
+<body>
+
+  <!-- ==================== STYLISH FLOATING WELCOME FEATURE ==================== -->
+  <div id="welcomeOverlay" class="welcome-overlay" role="dialog" aria-label="Welcome to The Young Prodigies">
+    <div class="welcome-orb welcome-orb--1"></div>
+    <div class="welcome-orb welcome-orb--2"></div>
+    <div class="welcome-grid-lines"></div>
+
+    <div class="welcome-content">
+      <div class="welcome-monogram">
+        <img src="typ_logo.png" alt="The Young Prodigies">
+      </div>
+      <p class="welcome-kicker">Worldwide</p>
+      <h1 class="welcome-title">The Young <em>Prodigies</em></h1>
+      <p class="welcome-sub">
+        Streetwear design. Individual expression. A distinctive approach to modern fashion.
+      </p>
+      <div class="welcome-actions">
+        <button id="enterAtelierBtn" class="btn-enter" type="button">Discover TYP</button>
+        <span class="welcome-meta">Established 2024 &bull; Ghana &bull; </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== HEADER NAVIGATION ==================== -->
+  <header id="siteHeader" class="site-header is-hero-overlay">
+    <div class="nav-inner">
+      <div>
+        <button id="mobileMenuBtn" class="mobile-menu-btn" type="button">Menu</button>
+        <nav class="nav-links" aria-label="Primary Navigation">
+          <button class="nav-link is-active" data-route="home" type="button">Home</button>
+          <button class="nav-link" data-route="lookbook" type="button">Lookbook</button>
+          <button class="nav-link" data-route="shop" type="button">Shop</button>
+          <button class="nav-link" data-route="about" type="button">Our Story</button>
+        </nav>
+      </div>
+
+      <button class="brand-mark" data-route="home" type="button">
+        The Young Prodigies
+        <span>Crafted with Passion</span>
+      </button>
+
+      <div class="nav-utilities">
+        <span class="currency-pill">GH&#8373; GHS</span>
+        <button id="openBagBtn" class="bag-trigger" type="button">
+          Bag <span id="navBagCount" class="bag-count">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div id="mobileDrawer" class="mobile-drawer" aria-hidden="true">
+    <button id="closeMobileDrawer" class="mobile-drawer-close" type="button">Close &times;</button>
+    <button class="mobile-drawer-link" data-route="home" type="button">Home</button>
+    <button class="mobile-drawer-link" data-route="lookbook" type="button">Lookbook</button>
+    <button class="mobile-drawer-link" data-route="shop" type="button">Shop</button>
+    <button class="mobile-drawer-link" data-route="about" type="button">Our Story</button>
+  </div>
+
+  <main>
+    <!-- ==================== PAGE 1: HOME (VIDEO-FIRST) ==================== -->
+    <section id="view-home" class="page-view is-active">
+      <div class="hero-video-section">
+        <video
+          id="heroVideo"
+          class="hero-video-el"
+          autoplay
+          muted
+          loop
+          playsinline
+          poster="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=1600&q=80"
+        >
+          <source src="https://assets.mixkit.co/videos/preview/mixkit-taking-photos-from-different-angles-of-a-model-34421-large.mp4" type="video/mp4" />
+        </video>
+        <div class="hero-scrim"></div>
+
+        <div class="hero-content">
+          <div class="container hero-flex">
+            <div class="hero-copy">
+              <span class="eyebrow">THE LATEST COLLECTION • TYP 2026</span>
+              <h2 class="heading-xl">Signature Tees</h2>
+              <p>
+                Thoughtfully designed pieces that celebrate individuality, refined aesthetics and contemporary expression. Rooted in Ghana. Designed for the world.
+              </p>
+              <div class="hero-ctas">
+                <button class="btn-hero-light" data-route="shop" type="button">Shop Collection</button>
+                <button class="btn-outline" data-route="lookbook" type="button" style="color:#F8F6F2;border-color:rgba(248,246,242,0.5);">
+                  View Lookbook
+                </button>
+              </div>
+            </div>
+
+            <button id="toggleHeroVideoBtn" class="video-control-pill" type="button">
+              <span class="live-dot"></span>
+              <span id="heroVideoStateText">Campaign Playing &bull; Pause</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Video Triptych -->
+      <section class="section-pad">
+        <div class="container">
+          <div class="section-head-row">
+            <div>
+              <span class="eyebrow">THE ART OF EXPRESSION</span>
+              <h2 class="heading-lg">A Study in Style.</h2>
+            </div>
+            <button class="btn-outline" data-route="shop" type="button">Explore All Pieces</button>
+          </div>
+
+          <div class="video-triptych">
+            <article class="video-card" data-shop-filter="Tshirts">
+              <div class="video-frame">
+                <span class="video-badge">Film 01 &bull; Tailoring</span>
+                <video
+                  autoplay
+                  muted
+                  loop
+                  playsinline
+                  poster="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&w=900&q=80"
+                >
+                  <source src="https://assets.mixkit.co/videos/preview/mixkit-fashion-cold-looking-woman-concept-video-39874-large.mp4" type="video/mp4" />
+                </video>
+              </div>
+              <div class="video-card-meta">
+                <h3 class="video-card-title">Signature Essentials </h3>
+                <span class="video-card-link">Explore Essentials &rarr;</span>
+              </div>
+            </article>
+
+            <article class="video-card" data-shop-filter="Tops">
+              <div class="video-frame">
+                <span class="video-badge">Film 02 &bull; Evening</span>
+                <video
+                  autoplay
+                  muted
+                  loop
+                  playsinline
+                  poster="https://images.unsplash.com/photo-1549439602-43ebca2327af?auto=format&fit=crop&w=900&q=80"
+                >
+                  <source src="https://assets.mixkit.co/videos/preview/mixkit-woman-modeling-a-short-black-dress-805-large.mp4" type="video/mp4" />
+                </video>
+              </div>
+              <div class="video-card-meta">
+                <h3 class="video-card-title">Contemporary Forms</h3>
+                <span class="video-card-link">Explore Collections &rarr;</span>
+              </div>
+            </article>
+
+            <article class="video-card" data-shop-filter="Jerseys">
+              <div class="video-frame">
+                <span class="video-badge">Film 03 &bull; Movement</span>
+                <video
+                  autoplay
+                  muted
+                  loop
+                  playsinline
+                  poster="https://images.unsplash.com/photo-1561365452-adb940139ffa?auto=format&fit=crop&w=900&q=80"
+                >
+                  <source src="https://assets.mixkit.co/videos/preview/mixkit-man-dancing-under-changing-lights-1240-large.mp4" type="video/mp4" />
+                </video>
+              </div>
+              <div class="video-card-meta">
+                <h3 class="video-card-title">Everyday Distinction</h3>
+                <span class="video-card-link">Discover More &rarr;</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Curated Pieces Preview -->
+      <section class="section-pad" style="background: var(--bg-ivory); border-top: 1px solid var(--border-hairline); border-bottom: 1px solid var(--border-hairline);">
+        <div class="container">
+          <div class="section-head-row">
+            <div>
+              <span class="eyebrow">THE TYP SELECTION</span>
+              <h2 class="heading-lg">Selected Pieces.</h2>
+            </div>
+            <button class="btn-outline" data-route="shop" type="button">View Full Catalog</button>
+          </div>
+          <div id="homeFeaturedGrid" class="product-grid"></div>
+        </div>
+      </section>
+
+      <!-- Split Film Manifesto -->
+      <section class="section-pad">
+        <div class="container">
+          <div class="split-atelier">
+            <div class="split-video-box">
+              <video
+                autoplay
+                muted
+                loop
+                playsinline
+                poster="https://images.unsplash.com/photo-1524504259109-ddd837233694?auto=format&fit=crop&w=900&q=80"
+              >
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-portrait-of-a-fashion-woman-with-silver-makeup-39875-large.mp4" type="video/mp4" />
+              </video>
+            </div>
+            <div class="split-text">
+              <span class="eyebrow">THE TYP PHILOSOPHY</span>
+              <h2 class="heading-lg">Individuality Without Compromise.</h2>
+              <p>
+              The Young Prodigies represents a streetwear perspective on fashion, identity and self-expression. Established in Kumasi, Ghana, we create distinctive pieces that bring together thoughtful design, individuality and timeless appeal. Every collection reflects our commitment to originality and considered style.
+              </p>
+              <button class="btn-primary" data-route="about" type="button">Read Our Story</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Delivery & Paystack Assurance Ribbon -->
+      <div class="assurance-strip">
+        <div class="container assurance-grid">
+          <div class="assurance-item">
+            <h4>Kumasi Express — GH&#8373; 20</h4>
+            <p>Ashanti Region within 48–72 hours.</p>
+          </div>
+          <div class="assurance-item">
+            <h4>Nationwide — GH&#8373; 40</h4>
+            <p>Insured courier delivery to Accra, Takoradi, Tamale, Cape Coast &amp; beyond.</p>
+          </div>
+          <div class="assurance-item">
+            <h4>Mobile Money &amp; Cards</h4>
+            <p>Pay securely in GH&#8373; via MTN MoMo, Telecel Cash, AT Money &amp; Debit Cards on Paystack.</p>
+          </div>
+          <div class="assurance-item">
+            <h4>Considered Production</h4>
+            <p>Thoughtfully developed collections with attention to design, quality and detail.Only retain the production claims that accurately describe how your products are made.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== PAGE 2: LOOKBOOK ==================== -->
+    <section id="view-lookbook" class="page-view">
+      <div class="page-banner">
+        <div class="container">
+          <span class="eyebrow">THE TYP EDITORIAL • 2026</span>
+          <h1 class="heading-xl">The Collection Edit.</h1>
+          <p style="max-width: 580px; margin-top: 1rem;">
+           An exploration of contemporary style, distinctive
+           silhouettes and individual expression.
+           Discover the collections through the TYP lens.
+        </p>
+        </div>
+      </div>
+
+      <div class="container">
+        <div id="lookbookGrid" class="lookbook-grid"></div>
+      </div>
+    </section>
+
+    <!-- ==================== PAGE 3: SHOP ==================== -->
+    <section id="view-shop" class="page-view">
+      <div class="page-banner">
+        <div class="container">
+          <span class="eyebrow">THE TYP STORE &bull;</span>
+          <h1 class="heading-xl"> Explore The Collection</h1>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="shop-toolbar">
+          <div id="shopFilterPills" class="filter-pills">
+            <button class="filter-pill is-active" data-cat="All" type="button">All</button>
+            <button class="filter-pill" data-cat="Tshirts" type="button">Tshirts</button>
+            <button class="filter-pill" data-cat="Tops" type="button">Tops</button>
+            <button class="filter-pill" data-cat="Jerseys" type="button">Jerseys</button>
+            <button class="filter-pill" data-cat="Hoodies" type="button">Hoodies</button>
+            <button class="filter-pill" data-cat="Accessories" type="button">Accessories</button>
+          </div>
+
+          <select id="shopSortSelect" class="sort-select" aria-label="Sort products">
+            <option value="featured">Sort: Featured</option>
+            <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc">Price: High to Low</option>
+          </select>
+        </div>
+
+        <div id="shopProductGrid" class="product-grid" style="padding-bottom: 6rem;"></div>
+      </div>
+    </section>
+
+    <!-- ==================== PAGE 4: ABOUT US ==================== -->
+    <section id="view-about" class="page-view">
+      <div class="about-hero">
+        <div class="container">
+          <span class="eyebrow">OUR IDENTITY • EST. 2024</span>
+          <h1 class="heading-xl">The Story of TYP.</h1>
+          <p class="about-lead">
+         A contemporary Ghanaian fashion label inspired by
+         individuality, creative expression and a distinctive
+         approach to modern style.
+        </p>
+
+          <div class="about-banner-img">
+            <img src="https://images.unsplash.com/photo-1550928431-ee0ec6db30d3?auto=format&fit=crop&w=1600&q=85" alt="The Young Prodigies Atelier Craftsmanship" />
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="about-pillars">
+          <div class="pillar-card">
+            <span class="pillar-num">01 &bull; Core Philosophy</span>
+            <h3>Distinctive Design</h3>
+            <p>
+              True luxury needs no excess. We strip away ornamental clutter so proportion, lapel balance, shoulder structure, and the natural fall of cloth speak with quiet authority.
+            </p>
+          </div>
+          <div class="pillar-card">
+            <span class="pillar-num">02 &bull; Heritage Code</span>
+            <h3>Heritage</h3>
+            <p>
+              Rather than reproducing traditional motifs literally, we encode Kumasi's royal textile discipline into subtle interior bindings, hand-loomed trims, and burnished brass closures.
+            </p>
+          </div>
+          <div class="pillar-card">
+            <span class="pillar-num">03 &bull; Permanence</span>
+            <h3>Timeless Expression</h3>
+            <p>
+              Every garment is engineered to age gracefully across decades, not weeks. We release deliberate, numbered capsules rather than chasing disposable fashion calendars.
+            </p>
+          </div>
+        </div>
+
+        <div class="about-story-block">
+          <div class="about-story-media">
+            <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=1000&q=85" alt="Inspiration behind The Young Prodigies collections" />
+          </div>
+          <div class="about-story-copy">
+            <span class="eyebrow">Our Inspirations</span>
+            <h2 class="heading-lg">Inspired by Individuality</h2>
+            <p>
+              Every collection begins in Kumasi—watching early morning mist lift over warm terracotta streets, studying the deliberate symmetry of carved Asante stools, and observing how contemporary African youth carry themselves across Accra, London, and New York.
+            </p>
+            <p>
+              Our silhouettes balance tropical breathability with sculptural weight. Loose, air-catching trousers meet sharply tailored cropped jackets; raw bone linens are juxtaposed against deep obsidian twill, echoing the contrast between sunlit stone and quiet shadow.
+            </p>
+          </div>
+        </div>
+
+        <div class="about-story-block is-reversed">
+          <div class="about-story-media">
+            <img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&w=1000&q=85" alt="High quality organic fabrics and ethical tailoring" />
+          </div>
+          <div class="about-story-copy">
+            <span class="eyebrow">Our Approach</span>
+            <h2 class="heading-lg">Honest Cloth. Dignified Hands.</h2>
+            <p>
+              Quality starts long before the first scissor cut. We partner with certified mills and regional weavers for long-staple organic cottons, breathable flax linens, deadstock suiting wools, and vegetable-tanned leathers finished without harsh toxic dyes.
+            </p>
+            <p>
+              Inside our Kumasi workshop, every tailor is a named artisan—not an anonymous line worker. We pay above-living studio wages, maintain humane daylight studio hours, and mentor young Ghanaian patternmakers ("The Prodigies") in bespoke construction and zero-waste cutting.
+            </p>
+          </div>
+        </div>
+
+        <div class="ethics-stats">
+          <div class="stat-item">
+            <strong>100%</strong>
+            <span>Natural &amp; Deadstock Luxury Fibers</span>
+          </div>
+          <div class="stat-item">
+            <strong>50 Pieces</strong>
+            <span>Maximum Run Per Numbered Edition</span>
+          </div>
+          <div class="stat-item">
+            <strong>Kumasi</strong>
+            <span>Designed, Patterned &amp; Finished Locally</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4 style="font-family: var(--font-serif); font-size: 1.55rem; font-weight: 400; letter-spacing: 0.14em; text-transform: uppercase;">
+            The Young Prodigies
+          </h4>
+          <p style="font-size: 0.85rem; color: rgba(248,246,242,0.68); margin-top: 0.9rem; max-width: 310px; font-weight: 300;">
+            Minimalist luxury fashion house rooted in Kumasi, Ghana. Crafted for modern permanence.
+          </p>
+          <button id="replayWelcomeBtn" class="btn-outline" type="button" style="margin-top: 1.4rem; padding: 0.6rem 1.2rem; font-size: 0.65rem; border-color: rgba(248,246,242,0.3); color: #F8F6F2;">
+            Replay Welcome Experience
+          </button>
+        </div>
+
+        <div class="footer-col">
+          <h5>Navigation</h5>
+          <ul>
+            <li><button data-route="home" type="button">Home</button></li>
+            <li><button data-route="lookbook" type="button">Lookbook</button></li>
+            <li><button data-route="shop" type="button">Shop Collection</button></li>
+            <li><button data-route="about" type="button">About Us</button></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Delivery &amp; Payments</h5>
+          <ul>
+            <li><span style="font-size:0.84rem;color:rgba(248,246,242,0.72);">Kumasi Delivery: GH&#8373; 20</span></li>
+            <li><span style="font-size:0.84rem;color:rgba(248,246,242,0.72);">Outside Kumasi: GH&#8373; 40</span></li>
+            <li><span style="font-size:0.84rem;color:rgba(248,246,242,0.72);">MTN MoMo &bull; Telecel &bull; AT Money</span></li>
+            <li><span style="font-size:0.84rem;color:rgba(248,246,242,0.72);">Visa &amp; Mastercard via Paystack</span></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5> Contact</h5>
+          <ul>
+            <li><span style="font-size:0.84rem;color:rgba(248,246,242,0.72);">Atonsu, Kumasi, Ashanti Region</span></li>
+            <li><a href="mailto:concierge@theyoungprodigies.com">theyoungprodigies.co@gmail.com</a></li>
+            <li><span style="font-size:0.84rem;color:rgba(248,246,242,0.72);"></span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy; 2026 The Young Prodigies. All Rights Reserved.</span>
+        <span>Powered by Paystack Ghana</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== SHOPPING BAG & PAYSTACK CHECKOUT DRAWER ==================== -->
+  <div id="drawerBackdrop" class="drawer-backdrop"></div>
+  <aside id="cartDrawer" class="cart-drawer" aria-label="Shopping Bag and Checkout">
+    <div class="cart-header">
+      <h3>Your TYP Bag</h3>
+      <button id="closeBagBtn" class="close-icon-btn" type="button" aria-label="Close bag">&times;</button>
+    </div>
+
+    <div class="cart-body">
+      <div id="cartItemsContainer"></div>
+
+      <div id="checkoutPanel" class="checkout-panel" style="display: none;">
+        <span class="checkout-label">1. Select Delivery Zone</span>
+        <div class="delivery-options">
+          <label class="delivery-option is-selected" data-zone="kumasi">
+            <div>
+              <input type="radio" name="deliveryZone" value="kumasi" checked />
+              <span class="delivery-option-title">Within Kumasi (Ashanti Region)</span>
+              <span class="delivery-option-sub">2–3 business days &bull; Dedicated rider</span>
+            </div>
+            <span class="delivery-option-fee">GH&#8373; 20.00</span>
+          </label>
+
+          <label class="delivery-option" data-zone="outside">
+            <div>
+              <input type="radio" name="deliveryZone" value="outside" />
+              <span class="delivery-option-title">Outside Kumasi (Nationwide)</span>
+              <span class="delivery-option-sub">Accra, Takoradi, Tamale &amp; all regions</span>
+            </div>
+            <span class="delivery-option-fee">GH&#8373; 40.00</span>
+          </label>
+        </div>
+
+        <span class="checkout-label">2. Client &amp; Dispatch Details</span>
+        <form id="checkoutForm" class="form-grid" onsubmit="return false;">
+          <input id="custName" class="form-input" type="text" placeholder="Full Name *" required />
+          <input id="custEmail" class="form-input" type="email" placeholder="Email Address (for Paystack receipt) *" required />
+          <input id="custPhone" class="form-input" type="tel" placeholder="Phone / MoMo Number (e.g. 024 000 0000) *" required />
+          <input id="custAddress" class="form-input" type="text" placeholder="Delivery Address &amp; City / Landmark *" required />
+        </form>
+
+        <span class="checkout-label">3. Preferred Paystack Channel</span>
+        <div class="payment-methods">
+          <button type="button" class="pay-method-btn is-selected" data-channel="mobile_money">
+            Mobile Money<br /><small style="opacity:0.75;">MTN / Telecel / AT</small>
+          </button>
+          <button type="button" class="pay-method-btn" data-channel="card">
+            Debit / Credit Card<br /><small style="opacity:0.75;">Visa &amp; Mastercard</small>
+          </button>
+        </div>
+
+        <div class="paystack-trust-note">
+          Encrypted checkout in <strong>Ghana Cedis (GH&#8373;)</strong> processed directly through your Paystack merchant account.
+        </div>
+      </div>
+    </div>
+
+    <div id="cartFooter" class="cart-footer" style="display: none;">
+      <div class="summary-row">
+        <span>Subtotal</span>
+        <span id="summarySubtotal">GH&#8373; 0.00</span>
+      </div>
+      <div class="summary-row">
+        <span id="summaryDeliveryLabel">Delivery (Kumasi)</span>
+        <span id="summaryDelivery">GH&#8373; 20.00</span>
+      </div>
+      <div class="summary-row is-total">
+        <span>Total Due</span>
+        <span id="summaryTotal">GH&#8373; 0.00</span>
+      </div>
+      <button id="payWithPaystackBtn" class="btn-primary" type="button" style="width: 100%;">
+        Pay Securely via Paystack
+      </button>
+    </div>
+  </aside>
+
+  <!-- ==================== PRODUCT QUICK VIEW MODAL ==================== -->
+  <div id="quickViewModal" class="modal-overlay" role="dialog" aria-modal="true">
+    <div class="quickview-box">
+      <button id="closeQuickViewBtn" class="close-icon-btn" type="button" style="position:absolute;top:1rem;right:1.25rem;z-index:2;">&times;</button>
+      <div class="quickview-media">
+        <img id="qvImage" src="" alt="" />
+      </div>
+      <div class="quickview-details">
+        <span id="qvCategory" class="eyebrow"></span>
+        <h2 id="qvTitle" class="heading-lg" style="font-size:2.1rem;"></h2>
+        <p id="qvPrice" style="font-size:1.1rem;font-weight:500;margin-top:0.4rem;"></p>
+        <p id="qvDesc" style="font-size:0.88rem;color:var(--ink-charcoal);font-weight:300;margin-top:1rem;line-height:1.7;"></p>
+        <p id="qvMaterial" style="font-size:0.74rem;color:var(--ink-muted);margin-top:0.8rem;letter-spacing:0.06em;text-transform:uppercase;"></p>
+
+        <div style="margin-top:1.4rem;">
+          <span class="checkout-label" style="margin-bottom:0.2rem;">Select Size</span>
+          <div id="qvSizes" class="size-selector">
+            <button type="button" class="size-pill" data-size="M">M</button>
+            <button type="button" class="size-pill" data-size="L">L</button>
+            <button type="button" class="size-pill is-selected" data-size="XL">XL</button>
+            <button type="button" class="size-pill" data-size="XXL">XXL</button>
+            <button type="button" class="size-pill" data-size="XXXL">XXXL</button>
+          </div>
+        </div>
+
+        <button id="qvAddToBagBtn" class="btn-primary" type="button" style="width:100%;">Add To Bag</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== ORDER CONFIRMATION RECEIPT MODAL ==================== -->
+  <div id="receiptModal" class="modal-overlay" role="dialog" aria-modal="true">
+    <div class="receipt-box">
+      <div class="receipt-badge">&#10003;</div>
+      <span class="eyebrow">Order Confirmed</span>
+      <h2 class="heading-lg" style="font-size:2rem;">Thank You for Joining The Prodigies</h2>
+      <p id="receiptMessage" style="font-size:0.9rem;color:var(--ink-charcoal);margin:1rem 0 1.5rem;font-weight:300;"></p>
+      <div id="receiptDetails" style="background:var(--bg-bone);padding:1rem;text-align:left;font-size:0.8rem;margin-bottom:1.6rem;line-height:1.8;"></div>
+      <button id="closeReceiptBtn" class="btn-primary" type="button" style="width:100%;">Continue Exploring</button>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast"></div>
+
+  <!-- Scripts -->
+  <script src="/data.js"></script>
+  <script src="/app.js"></script>
+</body>
+</html>
